@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container block news ">
+    <div class="top-text">
+        <div>
+            <h3 class='news-h3'>Kafedralar</h3>
+            <div class="line-b"></div>
+        </div>
+        <div class="line"></div>
+    </div>
+    <div class="row mt-4">
+        <div class="block_left col col-xxl-3 col-xl-3 col-lg-3">
+            <div class="card-box_left">
+                {% for kaf in kafedra %}
+                    <a href="{{ kaf.get_absolute_url }}" class="btn">{{ kaf.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="block_right col col-xxl-9 col-xl-9 col-lg-9 ">
+            <div class=" card-box_right">  
+                
+                {% for kafedra in kafedra %}
+                    <a href="{{ kafedra.get_absolute_url }}" class="btn">{{ kafedra.title }}</a>
+                {% endfor %}
+            
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

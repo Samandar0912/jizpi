@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+     <!-- Son'gi yangiliklar -->
+     <section class="block news container" id="news">
+      <div class="top-text">
+          <div>
+              <h3 class='news-h3'>So'ngi Elonlar</h3>
+              <div class="line-b"></div>
+          </div>
+          <div class="line"></div>
+      </div>
+
+      <div class="nav-news mt-4">
+       
+          <div class="elonlar_blocki">
+            {% for article in Article_elon %}
+                <div class="card mb-3">
+                    <img src="{{ article.img.url }}">
+                    <h5>{{ article.title|truncatewords:4 }}</h5>
+                    <p>{{ article.body|truncatewords:10 }}</p>
+                    <a href="{{ article.get_absolute_url }}" class="btn">Batafsil</a>
+                </div>
+            {% endfor %}
+                      
+          </div>
+      </div>
+  </section>
+
+
+  {% comment %} <section class="row pagination mt-5 mb-5">
+    <div class="col">
+      <a href="#" id="prevPage">&laquo;</a>
+      <a href="#" id="nextPage">&raquo;</a>
+    </div>
+  </section> {% endcomment %}
+
+{% endblock content %}
+
+

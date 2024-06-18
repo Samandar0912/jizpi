@@ -1,0 +1,157 @@
+{% load static %}
+{% load i18n %}
+<nav class="use-inf">
+    <div class="container">
+        <div class="cont-inf">
+            <div class="cont-inf-left">
+                <a href="{% url "bayroq" %}"><img width="30" height="20" src="{% static "/Photos/icons/flag.png" %}" alt=""></a><p>|</p>
+                <a href="{% url "gerb" %}"><img width="20" height="20" src="{% static "/Photos/icons/gerp.png" %}" alt=""></a><p>|</p>
+                <a href="#"><img src="{% static "/Photos/svg/music.svg" %}" alt=""></a><p>|</p>
+                <a href="#"><img src="{% static "/Photos/svg/lan.svg" %}" alt=""></a><p>|</p>
+                <a href="#"><img src="{% static "/Photos/svg/eays.svg" %}" alt=""></a><p>|</p>
+                <a href="https://jizpi.uz/webmail/"><img src="{% static "/Photos/svg/email.svg" %}" alt=""></a><p>|</p>
+                <a href="https://obhavo.uz/jizzakh"><img src="{% static "/Photos/svg/cloud.svg" %}" alt=""></a><p>|</p>
+            </div>
+            <div class="cont-inf-right">
+             
+              <form id="languageForm" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                  <input name="next" type="hidden" value="{{ redirect_to }}">
+                  <select class="language"aria-label="Default select example" name="language" onchange="document.getElementById('languageForm').submit();">
+                      {% get_current_language as LANGUAGE_CODE %}
+                      {% get_available_languages as LANGUAGES %}
+                      {% get_language_info_list for LANGUAGES as languages %}
+                      {% for language in languages %}
+                          <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                              {{ language.name_local }} ({{ language.code }})
+                          </option>
+                      {% endfor %}
+                  </select>
+              </form>
+
+                <img src="{% static "Photos/svg/locked.svg" %}" alt="">
+                <a href="{% url "login" %}" class="tizim">Tizimga kirish</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="bg-color">
+  <div class="container">
+    <div class="header_new">
+      <div class="nav-logo-left">
+          <a href="{% url "index" %}"><img class="jizpi-logo" src="{% static "Photos/icons/jizpi-logo.png" %}" alt=""></a>
+          <h2 class="text-jizpi">
+              <span class="mt-3">JIZZAX</span>
+              <span>POLITEXNIKA</span>
+              <span>INSTITUTI</span>
+          </h2>
+      </div>  
+
+      <img class="menu" src="{% static "Photos/icons/menu512.png" %}">
+
+      <div class="navbar_new  responsive">
+        <img class="close" src="{% static "Photos/icons/close48.png" %}">
+            <div class="dropdown">
+                <a href="#" class="navbar_nav_a">Yangiliklar</a>
+                <ul class="dropdown_ul">
+                  <li class="dropdown_li"><a href="{% url "news" %}">Yangiliklar</a></li>
+                  <li class="dropdown_li"><a href="{% url "elon" %}">Elonlar</a></li>
+                </ul>
+            </div>
+              
+            <div class="dropdown">
+                <a href="#" class="navbar_nav_a">Institut</a>
+                <ul class="dropdown_ul">
+                  <li class="dropdown_li"><a href="{% url "institut" %}">Institut</a></li>
+                  <li class="dropdown_li"><a href="{% url "kengash" %}">Kengashlar</a></li>
+                  <li class="dropdown_li"><a href="{% url "meyoriy-hujjat" %}">Meyoriy Hujjatlar</a></li>
+                </ul>
+            </div>
+              
+            <div class="dropdown">
+                <a href="#" class="navbar_nav_a">Tuzilma</a>
+                <ul class="dropdown_ul">
+                  <li class="dropdown_li"><a href="{% url "rektorat" %}">Rektorat</a></li>
+                  <li class="dropdown_li"><a href="{% url "bolimlar" %}">Bo'limlar</a></li>
+                  <li class="dropdown_li"><a href="{% url "markazlar" %}">Markazlar</a></li>
+                  <li class="dropdown_li"><a href="{% url "fakultet" %}">Fakultetlar</a></li>
+                  <li class="dropdown_li"><a href="{% url "kafedra_list" %}">Kafedralar</a></li>
+                </ul>
+            </div>
+              
+            <div class="dropdown">
+                <a href="#" class="navbar_nav_a">Faoliyat</a>
+                <ul class="dropdown_ul">
+                    <li class="dropdown_li"><a href="{% url "ilmiyFaoliyat" %}">Ilmiy Faoliyat</a></li>
+                    <li class="dropdown_li"><a href="{% url "oquvFaoliyat" %}">O'quv Faoliyat</a></li>
+                    <li class="dropdown_li"><a href="{% url "xalqaroFaoliyat" %}">Xalqaro Faoliyat</a></li>
+                    <li class="dropdown_li"><a href="{% url "moliyaviyFaoliyat" %}">Moliyaviy Faoliyat</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="navbar_nav_a">Qabul-2024</a>
+                <ul class="dropdown_ul">
+                  <li class="dropdown_li"><a href="{% url "callCenter" %}">CALL-CENTER</a></li>
+                  <li class="dropdown_li"><a href="{% url "bakalavr" %}">Bakalavr</a></li>
+                  <li class="dropdown_li"><a href="{% url "magistr" %}">Magistratura</a></li>
+                  <li class="dropdown_li"><a href="{% url "sirtqi" %}">Sirtqi Ta'lim</a></li>
+                  <li class="dropdown_li"><a href="{% url "doktarantura" %}">Doktorantura</a></li>
+                  <li class="dropdown_li"><a href="{% url "xorijiyTalabalar" %}">Xorijiy Fuqarolar</a></li>
+                  <li class="dropdown_li"><a href="{% url "qoshmaTalim" %}">Qoshma Ta'lim dasturi</a></li>
+                  <li class="dropdown_li"><a href="{% url "ikkiMutaxasislik" %}">2 - Mutaxassislik</a></li>
+                  <li class="dropdown_li"><a href="{% url "texnikum" %}">Texnikumlar</a></li>
+                </ul>
+            </div>
+              
+            <div class="dropdown">
+                <a href="#" class="navbar_nav_a">Talabalar</a>
+                <ul class="dropdown_ul">
+                    <li class="dropdown_li"><a href="{% url "tB" %}">Bakalavr</a></li>
+                    <li class="dropdown_li"><a href="{% url "tM" %}">Magistratura</a></li>
+                    <li class="dropdown_li"><a href="{% url "sirtqiT" %}">Sirtqi Ta'lim</a></li>
+                    <li class="dropdown_li"><a href="{% url "xt" %}">Xorijiy Fuqarolar</a></li>
+                    <li class="dropdown_li"><a href="{% url "qt" %}" class="last-a">O'qishni Ko'chirish va qayta tiklash</a></li>
+                </ul>
+            </div>
+              
+            
+            <div class="dropdown">
+                <a href="{% url "aloqa" %}" class="navbar_nav_a">Aloqa</a>
+            </div>
+            
+            <div class="dropdown">
+                <a href="http://hnt.jizpi.uz:8080/" class="navbar_nav_a">Interaktiv xizmatmatlar</a>
+            </div>
+              
+      </div>
+  </div>
+    
+  </div>
+</div>
+
+
+
+  
+  
+
+
+<script>
+  const menu = document.querySelector('.menu')
+  const close = document.querySelector('.close')
+  const navbarNew = document.querySelector('.responsive')
+
+  menu.addEventListener('click',()=>{
+    navbarNew.style="display: block !important;"
+  })
+
+  close.addEventListener('click',()=>{
+    navbarNew.style="display: none  !important;"
+  })
+
+
+
+</script>
+
+<!-- Navbar end -->
